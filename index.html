@@ -4,29 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>jiaoao · 个人主页</title>
+<meta name="description" content="jiaoao 的个人主页：开源工具、自动化脚本与精选收藏。">
+<link rel="icon" href="https://github.com/jiaoao3333.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#fff;padding:24px}
-.card{text-align:center;max-width:480px;width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:48px 32px}
+body{min-height:100vh;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#fff;padding:32px 16px 48px}
+.wrap{max-width:680px;margin:0 auto}
+.card{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:44px 28px 36px}
 .avatar{width:96px;height:96px;border-radius:50%;border:3px solid rgba(255,255,255,.35)}
-h1{font-size:32px;margin:20px 0 10px;letter-spacing:2px}
-.tag{color:#a8c5d6;font-size:15px;line-height:1.7}
-.links{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.links a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:9px 20px;border-radius:999px;font-size:14px}
-.links a:hover{background:rgba(255,255,255,.12)}
-.foot{margin-top:36px;color:#7fa3b5;font-size:12px;letter-spacing:1px}
+h1{font-size:32px;margin:18px 0 10px;letter-spacing:2px}
+.tag{color:#a8c5d6;font-size:15px;line-height:1.8}
+.links{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.links a{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:9px 20px;border-radius:999px;font-size:14px;transition:background .2s}
+.links a:hover{background:rgba(255,255,255,.14)}
+h2{font-size:17px;letter-spacing:3px;color:#cfe3ee;margin:36px 4px 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.item{display:block;text-decoration:none;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px;transition:background .2s,transform .2s}
+.item:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+.item .name{font-size:15px;font-weight:600;word-break:break-all}
+.item .desc{margin-top:6px;font-size:13px;line-height:1.6;color:#a8c5d6}
+.about{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 20px;font-size:14px;line-height:1.9;color:#c8dae4}
+.foot{margin-top:40px;text-align:center;color:#7fa3b5;font-size:12px;letter-spacing:1px;line-height:2}
 </style>
 </head>
 <body>
+<div class="wrap">
 <div class="card">
 <img class="avatar" src="https://github.com/jiaoao3333.png" alt="jiaoao">
 <h1>jiaoao</h1>
-<p class="tag">你好，我是 jiaoao。<br>这是我的个人主页，内容正在陆续添加中。</p>
+<p class="tag">你好，我是 jiaoao。<br>热衷开源工具与自动化，喜欢把重复的事情交给脚本。</p>
 <div class="links">
 <a href="https://github.com/jiaoao3333">GitHub</a>
+<a href="https://github.com/jiaoao3333?tab=stars">我的收藏</a>
 <a href="mailto:jiaozheng@126.com">联系我</a>
 </div>
-<p class="foot">JIAOZHENGNIHAO.LOC.CC</p>
+</div>
+
+<h2>我的仓库</h2>
+<div class="grid">
+<a class="item" href="https://github.com/jiaoao3333/jiaoao3333.github.io">
+<div class="name">jiaoao3333.github.io</div>
+<div class="desc">这个个人主页的源码，托管在 GitHub Pages。</div>
+</a>
+<a class="item" href="https://github.com/jiaoao3333/uptime-kuma">
+<div class="name">uptime-kuma（Fork）</div>
+<div class="desc">优雅的服务存活监控工具，Fork 自 louislam/uptime-kuma。</div>
+</a>
+</div>
+
+<h2>精选收藏</h2>
+<div class="grid">
+<a class="item" href="https://github.com/sindresorhus/awesome">
+<div class="name">awesome</div>
+<div class="desc">各种精选资源清单的总目录，不知道找什么时先翻它。</div>
+</a>
+<a class="item" href="https://github.com/public-apis/public-apis">
+<div class="name">public-apis</div>
+<div class="desc">免费 API 大全：天气、影视、翻译等几百个免费接口。</div>
+</a>
+<a class="item" href="https://github.com/yt-dlp/yt-dlp">
+<div class="name">yt-dlp</div>
+<div class="desc">功能最强的视频下载工具，支持上千个网站。</div>
+</a>
+<a class="item" href="https://github.com/freeCodeCamp/freeCodeCamp">
+<div class="name">freeCodeCamp</div>
+<div class="desc">免费学编程的完整课程体系，从零基础到进阶。</div>
+</a>
+</div>
+
+<h2>关于</h2>
+<div class="about">平时喜欢折腾效率工具、开源项目和各类自动化脚本。这个主页是我的一个小据点，会慢慢充实。有事可以通过上面的邮箱联系我。</div>
+
+<p class="foot">JIAOZHENGNIHAO.LOC.CC<br>Powered by GitHub Pages</p>
 </div>
 </body>
 </html>
