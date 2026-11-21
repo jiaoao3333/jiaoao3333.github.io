@@ -1,5 +1,4 @@
 mixed-port: 7890
-tproxy-port: 7893
 bind-address: "*"
 mode: rule
 log-level: silent
@@ -57,21 +56,6 @@ tun:
   auto-redirect: false
   auto-detect-interface: true
 
-listeners:
-  - name: ebpf-in
-    type: ebpf
-    local:
-      enable: false
-      ipv6: false
-      bypass-private-address: false
-    shared:
-      enable: false
-      interface:
-        - wlan2
-        - br-lan
-        - br0
-      ipv6: false
-      bypass-private-address: false
 
 dns:
   enable: true
