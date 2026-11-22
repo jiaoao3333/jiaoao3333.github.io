@@ -83,21 +83,28 @@ export PATH="$HOME/go-sdk/go/bin:$PATH"
 go version
 
 echo "=== gomobile ==="
-# NOTE: 'go install <pkg>' without @version inside a module only works if that
-# module provides the package; the core module does not provide x/mobile, so
-# the old form failed silently (|| true) and build_libbox then died with
-# 'missing gomobile installation'. Install from /tmp (outside any module) with
-# an explicit version, fall back to the sagernet fork, and fail loud if the
-# binary is still absent.
-export GOBIN="$WS/core/bin"
+# Root cause of run 3 (and run 2): build_libbox calls build_shared.FindMobile(),
+# which checks for $GOPATH/bin/gobind -- NOT for `gomobile` in PATH. `gobind`
+# is produced by `gomobile init`; run 3's `gomobile init || true` hid its
+# failure, so no gobind ever existed and the build died with FATAL
+# 'missing gomobile installation'. Two further defects in run 3: upstream
+# x/mobile@latest requires go >= 1.26 (toolchain switch) and its `version`
+# self-check fails outside a module, so install the sagernet fork pinned to
+# the version core's go.mod uses (v0.1.12) instead, into the default
+# GOPATH/bin, and install gobind directly as well so FindMobile's check
+# passes even if `gomobile init` cannot run.
+export GOPATH="${GOPATH:-$HOME/go}"
+export GOBIN="$GOPATH/bin"
 mkdir -p "$GOBIN"
-( cd /tmp && go install golang.org/x/mobile/cmd/gomobile@latest ) \
-  || ( cd /tmp && go install github.com/sagernet/gomobile/cmd/gomobile@v0.1.12 )
 export PATH="$GOBIN:$PATH"
+( cd /tmp && go install github.com/sagernet/gomobile/cmd/gomobile@v0.1.12 )
+( cd /tmp && go install github.com/sagernet/gomobile/cmd/gobind@v0.1.12 )
 command -v gomobile || { echo "gomobile install failed"; exit 1; }
-gomobile version || true
-gomobile init || true
+command -v gobind || { echo "gobind install failed"; exit 1; }
 cd "$WS/core"
+gomobile version || true
+gomobile init || echo "gomobile init failed (continuing, gobind preinstalled)"
+[ -x "$GOPATH/bin/gobind" ] || { echo "gobind not in GOPATH/bin ($GOPATH/bin)"; exit 1; }
 
 echo "=== build Libbox.xcframework (ios, ding core) ==="
 go run ./cmd/internal/build_libbox -target apple -platform ios 2>&1 | tee "$WS/libbox-build.log"
