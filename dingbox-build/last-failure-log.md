@@ -1,4 +1,4 @@
-# build failure log - run 2 - Sun Nov 22 13:16:57 UTC 2026
+# build failure log - run 3 - Sun Nov 22 13:22:26 UTC 2026
 ## libbox-build.log (tail)
 go: downloading github.com/sagernet/gomobile v0.1.12
 go: downloading github.com/reF1nd/sing v0.9.7-0.20261025115535-d4dda9140332
@@ -21,8 +21,8 @@ exit status 1
 + xcodebuild -version
 Xcode 26.6
 Build version 17F113
-+ ls /Applications
 + grep -i xcode
++ ls /Applications
 Xcode_26.0.1.app
 Xcode_26.0.app
 Xcode_26.1.1.app
@@ -63,31 +63,39 @@ core describe: v1.15.0-alpha.13-d82b4e632
 + GO_ARCH=arm64
 + curl -fsL -o /tmp/go.tgz https://go.dev/dl/go1.25.5.darwin-arm64.tar.gz
 + ls -lh /tmp/go.tgz
--rw-r--r--  1 runner  wheel    55M Nov 22 13:16 /tmp/go.tgz
+-rw-r--r--  1 runner  wheel    55M Nov 22 13:21 /tmp/go.tgz
 + mkdir -p /Users/runner/go-sdk
 + tar -C /Users/runner/go-sdk -xzf /tmp/go.tgz
 + export PATH=/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
 + PATH=/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
 + go version
 go version go1.25.5 darwin/arm64
-+ echo '=== gomobile (best effort) ==='
-=== gomobile (best effort) ===
-+ cd /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core
++ echo '=== gomobile ==='
+=== gomobile ===
 + export GOBIN=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
 + GOBIN=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
-+ go install golang.org/x/mobile/cmd/gomobile
-no required module provides package golang.org/x/mobile/cmd/gomobile; to add it:
-	go get golang.org/x/mobile/cmd/gomobile
-+ true
-+ ls /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
-ls: /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin: No such file or directory
-+ true
++ mkdir -p /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
++ cd /tmp
++ go install golang.org/x/mobile/cmd/gomobile@latest
+go: downloading golang.org/x/mobile v0.0.0-20261117202452-47699113848a
+go: golang.org/x/mobile@v0.0.0-20261117202452-47699113848a requires go >= 1.26.0; switching to go1.26.11
+go: downloading go1.26.11 (darwin/arm64)
+go: downloading golang.org/x/mod v0.43.0
+go: downloading golang.org/x/sync v0.25.0
+go: downloading golang.org/x/tools v0.53.0
 + export PATH=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin:/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
 + PATH=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin:/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
++ command -v gomobile
+/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin/gomobile
++ gomobile version
+gomobile version unknown: cannot test gomobile binary: exit status 1, no required module provides package golang.org/x/mobile/cmd/gomobile: go.mod file not found in current directory or any parent directory; see 'go help modules'
+
++ gomobile init
++ cd /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core
 + echo '=== build Libbox.xcframework (ios, ding core) ==='
 === build Libbox.xcframework (ios, ding core) ===
-+ go run ./cmd/internal/build_libbox -target apple -platform ios
 + tee /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/libbox-build.log
++ go run ./cmd/internal/build_libbox -target apple -platform ios
 go: downloading github.com/sagernet/gomobile v0.1.12
 go: downloading github.com/reF1nd/sing v0.9.7-0.20261025115535-d4dda9140332
 go: downloading howett.net/plist v1.0.1
