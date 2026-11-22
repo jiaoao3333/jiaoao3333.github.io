@@ -1,0 +1,23 @@
+name: dingbox-build
+
+on:
+  push:
+    paths:
+      - '.github/workflows/dingbox-build.yml'
+      - 'dingbox-build/**'
+      - '!dingbox-build/last-failure-log.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-26
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build DingBox
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash dingbox-build/build.sh
