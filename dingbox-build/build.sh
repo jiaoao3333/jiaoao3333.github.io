@@ -28,7 +28,20 @@ on_failure() {
     git config user.name "dingbox-build" || true
     git add dingbox-build/last-failure-log.md || true
     git commit -m "dingbox: failure log run ${GITHUB_RUN_NUMBER:-?}" || true
-    git push || true
+    git push origin HEAD:main || true
+    # fallback: publish raw logs as a public release (fetchable without auth)
+    if command -v gh >/dev/null 2>&1; then
+      assets=""
+      for f in "$WS/build-trace.log" "$WS/libbox-build.log" "$WS/xcodebuild.log"; do
+        [ -f "$f" ] && assets="$assets $f"
+      done
+      if [ -n "$assets" ]; then
+        # shellcheck disable=SC2086
+        gh release create "dingbox-fail-${GITHUB_RUN_NUMBER:-manual}" $assets \
+          --title "DingBox failure logs run ${GITHUB_RUN_NUMBER:-manual}" \
+          --notes "Raw build logs for failed run ${GITHUB_RUN_NUMBER:-manual}." || true
+      fi
+    fi
   fi
   exit $rc
 }
@@ -42,8 +55,11 @@ ls /Applications | grep -i xcode || true
 sw_vers || true
 
 echo "=== fetch sources ==="
-git clone --depth 1 --branch "$CORE_REF" "https://github.com/$CORE_REPO.git" "$WS/core" 2>/dev/null \
-  || git clone "https://github.com/$CORE_REPO.git" "$WS/core"
+if ! git clone --depth 1 --branch "$CORE_REF" "https://github.com/$CORE_REPO.git" "$WS/core"; then
+  rm -rf "$WS/core"
+  git clone "https://github.com/$CORE_REPO.git" "$WS/core"
+  git -C "$WS/core" checkout "$CORE_REF"
+fi
 if [ -n "$CLIENT_REF" ]; then
   git clone --depth 1 --branch "$CLIENT_REF" "https://github.com/$CLIENT_REPO.git" "$WS/sing-box-for-apple"
 else
@@ -59,7 +75,8 @@ case "$ARCH" in
   x86_64) GO_ARCH=amd64 ;;
   *) GO_ARCH=arm64 ;;
 esac
-curl -sL -o /tmp/go.tgz "https://go.dev/dl/go${GO_VERSION}.darwin-${GO_ARCH}.tar.gz"
+curl -fsL -o /tmp/go.tgz "https://go.dev/dl/go${GO_VERSION}.darwin-${GO_ARCH}.tar.gz"
+ls -lh /tmp/go.tgz
 mkdir -p "$HOME/go-sdk"
 tar -C "$HOME/go-sdk" -xzf /tmp/go.tgz
 export PATH="$HOME/go-sdk/go/bin:$PATH"
