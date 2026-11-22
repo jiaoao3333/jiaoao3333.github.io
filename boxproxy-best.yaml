@@ -1,0 +1,734 @@
+dns:
+  enable: true
+  ipv6: false
+  nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+ipv6: false
+log-level: silent
+mixed-port: 7890
+mode: rule
+proxies:
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /
+  name: 🇨🇳 上海市 电信-54321
+  network: http
+  port: 54321
+  server: 106.15.107.224
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: f4587104-415d-468a-b50f-3b9d22d3386d
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇭🇰 香港-01
+  network: http
+  port: 9999
+  server: 8.217.225.87
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 08df46ce-6d52-42e4-9575-14dfe09ec8a3
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /
+  name: 🇭🇰 香港-02
+  network: http
+  port: 52080
+  server: 47.86.54.113
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 17016cf8-d494-45ed-9741-2a4ed8b6a9e9
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇰🇷 韩国-01
+  network: http
+  port: 9080
+  server: 158.180.93.118
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: eac12b3a-d4f8-410a-9571-abfe5333f10f
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇰🇷 韩国-02
+  network: http
+  port: 9527
+  server: 158.180.93.118
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 1f6c5b06-ae6a-40c5-9966-0655774fec3f
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-01
+  network: http
+  port: 9080
+  server: 107.172.103.175
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 289c965e-505c-4982-9486-e373ea4cd5f1
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-02
+  network: http
+  port: 55555
+  server: 107.172.103.175
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: a92bbf93-520d-4c3a-92b7-94a7931a14cf
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-03
+  network: http
+  port: 52080
+  server: 207.56.20.54
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: c392d8c4-e1af-434c-9ac9-d2599ec89ed1
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-04
+  network: http
+  port: 8800
+  server: 207.56.20.54
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 46cd86c4-1551-4203-993b-a833e6cd34db
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /3x
+  name: 🇺🇸 美国-05
+  network: http
+  port: 52080
+  server: 192.204.58.87
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 700dc5c3-9b7b-4ac8-8ee5-010ca3d03789
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-06
+  network: http
+  port: 23567
+  server: 172.245.106.236
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 94b804fa-f7f0-4105-9544-ec667c876bee
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-07
+  network: http
+  port: 52080
+  server: 172.245.106.236
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 069b590d-895b-4707-bf71-7c204c3f6e77
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /3x
+  name: 🇺🇸 美国-08
+  network: http
+  port: 2053
+  server: 107.172.18.132
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 6ebbfda8-f0f8-4dbe-9bd0-82cc232cfb1e
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /3x
+  name: 🇺🇸 美国-09
+  network: http
+  port: 52080
+  server: 107.172.18.132
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 2ceddc69-0f1a-44b2-b7b3-fd6674c3fc59
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-10
+  network: http
+  port: 2941
+  server: 165.1.66.87
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: d31ab684-b703-48fb-8574-fe258fbf6ec1
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇺🇸 美国-11
+  network: http
+  port: 52080
+  server: 165.1.66.87
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: a8f7dc13-918a-447c-a365-b85b7a9caa31
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /3x
+  name: 🇺🇸 美国-12
+  network: http
+  port: 2053
+  server: 192.204.58.87
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 286a45bc-f3aa-4a2d-8e6e-21fb824d9eeb
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-13
+  network: http
+  port: 52080
+  server: 107.174.133.115
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: e7fb8bc6-5e0a-4e64-86cc-eb0ddd7ef4dd
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-14
+  network: http
+  port: 52080
+  server: 91.217.139.126
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 849cee87-c64a-4a93-b02f-865ac485f0fd
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-15
+  network: http
+  port: 52080
+  server: 23.94.214.118
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 1935aead-6a62-4db3-a8dd-eb0d89e0b74f
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /qq-group-938399693
+  name: 🇺🇸 美国-16
+  network: http
+  port: 21094
+  server: 82.29.132.78
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 6b1f809d-59a0-4541-b628-f083c2859009
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-17
+  network: http
+  port: 1086
+  server: 172.245.90.231
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: c9003b9b-2b9c-4033-80d8-3c57420c9604
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-18
+  network: http
+  port: 1288
+  server: 107.175.76.215
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 29a72eac-a4d1-4526-8fa0-d3ecc4e38b44
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-19
+  network: http
+  port: 52080
+  server: 23.94.83.37
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 355c1760-9bde-4b77-916b-5191e7f704a3
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇺🇸 美国-20
+  network: http
+  port: 52080
+  server: 43.153.117.95
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: ae4817d0-eed5-4702-af53-e21a6a7ac988
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /3x
+  name: 🇨🇭 瑞士
+  network: http
+  port: 42831
+  server: 179.43.140.24
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: a925a98c-ad7a-40c6-9fdf-130a1de69416
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇩🇪 德国
+  network: http
+  port: 52080
+  server: 23.165.200.150
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 672cdade-bb05-4c86-b578-e5d09b79524a
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /QQqun-737805443
+  name: 🇰🇭 柬埔寨-金边-广播-大带宽-52080
+  network: http
+  port: 52080
+  server: 38.54.4.243
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: 2b90e52c-5af5-47ef-b127-e5f76219a408
+- alterId: 0
+  cipher: auto
+  client-fingerprint: ''
+  http-opts:
+    headers:
+      Host:
+      - m.iqiyi.com
+    method: GET
+    path:
+    - /x
+  name: 🇹🇭 泰国
+  network: http
+  port: 32080
+  server: 27.254.83.174
+  servername: m.iqiyi.com
+  type: vmess
+  udp: true
+  uuid: b9e84fb2-4c20-4d5b-a0f2-d09693706a4b
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/南京电信①
+  port: 443
+  server: 180.101.50.208
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/南京电信②
+  port: 443
+  server: 180.101.50.249
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/北京电信①
+  port: 443
+  server: 220.181.7.1
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/北京电信②
+  port: 443
+  server: 220.181.33.174
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/北京电信③
+  port: 443
+  server: 220.181.111.189
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/广州电信
+  port: 443
+  server: 14.215.182.75
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/保定联通①
+  port: 443
+  server: 110.242.70.68
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/保定联通②
+  port: 443
+  server: 110.242.70.69
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/南京联通
+  port: 443
+  server: 153.3.237.117
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/苏州联通
+  port: 443
+  server: 157.0.146.158
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/南京移动
+  port: 443
+  server: 36.155.169.188
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/北京移动
+  port: 443
+  server: 39.156.69.198
+  type: http
+  udp: false
+- headers:
+    Host: 153.3.236.22:443
+    X-T5-Auth: 683556433
+  name: 百度/广州移动
+  port: 443
+  server: 183.240.98.84
+  type: http
+  udp: false
+proxy-groups:
+- interval: 300
+  name: 自动优选
+  proxies:
+  - 🇨🇳 上海市 电信-54321
+  - 🇭🇰 香港-01
+  - 🇭🇰 香港-02
+  - 🇰🇷 韩国-01
+  - 🇰🇷 韩国-02
+  - 🇺🇸 美国-01
+  - 🇺🇸 美国-02
+  - 🇺🇸 美国-03
+  - 🇺🇸 美国-04
+  - 🇺🇸 美国-05
+  - 🇺🇸 美国-06
+  - 🇺🇸 美国-07
+  - 🇺🇸 美国-08
+  - 🇺🇸 美国-09
+  - 🇺🇸 美国-10
+  - 🇺🇸 美国-11
+  - 🇺🇸 美国-12
+  - 🇺🇸 美国-13
+  - 🇺🇸 美国-14
+  - 🇺🇸 美国-15
+  - 🇺🇸 美国-16
+  - 🇺🇸 美国-17
+  - 🇺🇸 美国-18
+  - 🇺🇸 美国-19
+  - 🇺🇸 美国-20
+  - 🇨🇭 瑞士
+  - 🇩🇪 德国
+  - 🇰🇭 柬埔寨-金边-广播-大带宽-52080
+  - 🇹🇭 泰国
+  - 百度/南京电信①
+  - 百度/南京电信②
+  - 百度/北京电信①
+  - 百度/北京电信②
+  - 百度/北京电信③
+  - 百度/广州电信
+  - 百度/保定联通①
+  - 百度/保定联通②
+  - 百度/南京联通
+  - 百度/苏州联通
+  - 百度/南京移动
+  - 百度/北京移动
+  - 百度/广州移动
+  tolerance: 50
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+- name: 手动选择
+  proxies:
+  - 自动优选
+  - 🇨🇳 上海市 电信-54321
+  - 🇭🇰 香港-01
+  - 🇭🇰 香港-02
+  - 🇰🇷 韩国-01
+  - 🇰🇷 韩国-02
+  - 🇺🇸 美国-01
+  - 🇺🇸 美国-02
+  - 🇺🇸 美国-03
+  - 🇺🇸 美国-04
+  - 🇺🇸 美国-05
+  - 🇺🇸 美国-06
+  - 🇺🇸 美国-07
+  - 🇺🇸 美国-08
+  - 🇺🇸 美国-09
+  - 🇺🇸 美国-10
+  - 🇺🇸 美国-11
+  - 🇺🇸 美国-12
+  - 🇺🇸 美国-13
+  - 🇺🇸 美国-14
+  - 🇺🇸 美国-15
+  - 🇺🇸 美国-16
+  - 🇺🇸 美国-17
+  - 🇺🇸 美国-18
+  - 🇺🇸 美国-19
+  - 🇺🇸 美国-20
+  - 🇨🇭 瑞士
+  - 🇩🇪 德国
+  - 🇰🇭 柬埔寨-金边-广播-大带宽-52080
+  - 🇹🇭 泰国
+  - 百度/南京电信①
+  - 百度/南京电信②
+  - 百度/北京电信①
+  - 百度/北京电信②
+  - 百度/北京电信③
+  - 百度/广州电信
+  - 百度/保定联通①
+  - 百度/保定联通②
+  - 百度/南京联通
+  - 百度/苏州联通
+  - 百度/南京移动
+  - 百度/北京移动
+  - 百度/广州移动
+  type: select
+rules:
+- MATCH,手动选择
