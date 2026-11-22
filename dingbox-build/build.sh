@@ -19,7 +19,8 @@ on_failure() {
   if [ $rc -ne 0 ]; then
     {
       echo "# build failure log - run ${GITHUB_RUN_NUMBER:-?} - $(date -u)"
-      echo "## libbox-build.log (tail)"; tail -120 "$WS/libbox-build.log" 2>/dev/null || echo "(none)"
+      echo "## build errors (grep)"; grep -E "undefined:|error:|failed: exit status|panic:" "$WS/libbox-build.log" 2>/dev/null | grep -v -E "^github\.com|^google\.golang|^golang\.org|^go\.uber" | head -40 || echo "(none)"
+      echo "## libbox-build.log (tail)"; tail -300 "$WS/libbox-build.log" 2>/dev/null || echo "(none)"
       echo "## xcodebuild.log (tail)"; tail -200 "$WS/xcodebuild.log" 2>/dev/null || echo "(none)"
       echo "## build.sh trace (tail)"; tail -120 "$WS/build-trace.log" 2>/dev/null || echo "(none)"
     } > "$FAILLOG" 2>/dev/null || true
@@ -67,6 +68,22 @@ else
 fi
 echo "client HEAD: $(git -C "$WS/sing-box-for-apple" rev-parse HEAD)"
 echo "core describe: $(git -C "$WS/core" describe --tags 2>/dev/null || echo n/a)"
+
+echo "=== patch core: upstream iOS/cgo build break (run 4) ==="
+# Root cause of run 4: at upstream commit d82b4e63 (this fork's base),
+# dns/transport/local/local.go uses localServerSet and
+# Transport.exchangeAsync, but both live in local_shared.go guarded by
+# `//go:build !darwin || (darwin && !cgo)` -- excluded when building for
+# iOS (darwin+cgo), so `go build` died with `undefined: localServerSet`
+# and `t.exchangeAsync undefined`. Upstream fixed it on `testing` by
+# dropping that build tag (their local_darwin.go is byte-identical to the
+# fork's, and no symbol in local_shared.go collides with it). Mirror it.
+SHARED="$WS/core/dns/transport/local/local_shared.go"
+grep -qF '//go:build !darwin || (darwin && !cgo)' "$SHARED" || { echo "unexpected: build tag line missing in local_shared.go (upstream may have fixed it)"; exit 1; }
+grep -vF '//go:build !darwin || (darwin && !cgo)' "$SHARED" > "$SHARED.tmp" && mv "$SHARED.tmp" "$SHARED"
+grep -q 'type localServerSet struct' "$SHARED" || { echo "patch broke local_shared.go"; exit 1; }
+grep -q 'func (t \*Transport) exchangeAsync' "$SHARED" || { echo "patch broke local_shared.go"; exit 1; }
+echo "patched local_shared.go (build tag removed)"
 
 echo "=== install Go $GO_VERSION ==="
 ARCH=$(uname -m)
