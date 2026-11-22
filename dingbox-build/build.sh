@@ -69,6 +69,16 @@ fi
 echo "client HEAD: $(git -C "$WS/sing-box-for-apple" rev-parse HEAD)"
 echo "core describe: $(git -C "$WS/core" describe --tags 2>/dev/null || echo n/a)"
 
+echo "=== init client submodules (Runestone) ==="
+# Root cause of run 5: Frameworks/Runestone is a git submodule of
+# sing-box-for-apple (nekohasekai/Runestone); a plain `git clone --depth 1`
+# leaves it an empty directory, so xcodebuild died at Resolve Package
+# Graph ("Package.swift doesn't exist in file system"). Initialise it
+# and fail fast if the manifest is still missing.
+git -C "$WS/sing-box-for-apple" submodule update --init --recursive --depth 1
+[ -f "$WS/sing-box-for-apple/Frameworks/Runestone/Package.swift" ] || { echo "Runestone submodule still missing after init"; exit 1; }
+echo "Runestone submodule present"
+
 echo "=== patch core: upstream iOS/cgo build break (run 4) ==="
 # Root cause of run 4: at upstream commit d82b4e63 (this fork's base),
 # dns/transport/local/local.go uses localServerSet and
