@@ -1,111 +1,230 @@
-# build failure log - run 3 - Sun Nov 22 13:22:26 UTC 2026
+# build failure log - run 4 - Sun Nov 22 13:46:22 UTC 2026
 ## libbox-build.log (tail)
-go: downloading github.com/sagernet/gomobile v0.1.12
-go: downloading github.com/reF1nd/sing v0.9.7-0.20261025115535-d4dda9140332
-go: downloading howett.net/plist v1.0.1
-go: downloading github.com/logrusorgru/aurora v2.0.3+incompatible
-go: downloading golang.org/x/mod v0.40.0
-go: downloading github.com/miekg/dns v1.1.72
-go: downloading golang.org/x/crypto v0.55.0
-go: downloading golang.org/x/sys v0.47.0
-go: downloading go4.org/netipx v0.0.0-20260823151212-3075585bcbeb
-[31mFATAL[0m[0000] missing gomobile installation
+github.com/sagernet/tailscale/tsd
+html/template
+html/template
+github.com/sagernet/sing-box/provider/local
+github.com/sagernet/tailscale/derp/derpserver
+github.com/sagernet/tailscale/derp/derpserver
+github.com/sagernet/sing-box/provider/remote
+github.com/coder/websocket/internal/bpool
+github.com/coder/websocket/internal/errd
+github.com/coder/websocket
+github.com/sagernet/sing-box/service/api
+github.com/caddyserver/certmagic/internal/atomicfile
+github.com/caddyserver/zerossl
+github.com/libdns/libdns
+github.com/mholt/acmez/v3/acme
+github.com/mholt/acmez/v3/acme
+github.com/mholt/acmez/v3
+github.com/mholt/acmez/v3
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress/compress_sse41
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/utils
+github.com/zeebo/blake3/internal/utils
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash/hash_avx2
+github.com/zeebo/blake3/internal/alg/hash/hash_avx2
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3
+github.com/zeebo/blake3
+go.uber.org/zap/exp/zapslog
+go.uber.org/zap/exp/zapslog
+golang.org/x/crypto/ocsp
+golang.org/x/crypto/ocsp
+github.com/caddyserver/certmagic
+github.com/dgryski/go-metro
+github.com/caddyserver/certmagic
+github.com/axiomhq/hyperloglog
+github.com/go4org/hashtriemap
+github.com/sagernet/tailscale/net/wsconn
+text/template/parse
+text/template
+html/template
+github.com/sagernet/tailscale/derp/derpserver
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/resolved
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/usbip
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/sagernet/sing-box/service/usbip
+github.com/caddyserver/certmagic/internal/atomicfile
+github.com/caddyserver/zerossl
+github.com/libdns/libdns
+github.com/mholt/acmez/v3/acme
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/mholt/acmez/v3
+github.com/sagernet/sing/protocol/http
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/utils
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3
+go.uber.org/zap/exp/zapslog
+golang.org/x/crypto/ocsp
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/caddyserver/certmagic
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/sing-box/service/resolved
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/usbip
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/sagernet/sing/protocol/http
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/service/derp
+github.com/sagernet/sing-box/service/derp
+github.com/sagernet/sing-box/service/derp
+/Users/runner/go/bin/gomobile: ios/arm64: go build -buildmode=c-archive -o /var/folders/q2/p1t6rgxj5fj32g1dc7dmd49r0000gn/T/gomobile-work-1970291810/libbox-ios-arm64.a -tags=with_quic,with_wireguard,with_utls,with_naive_outbound,with_clash_api,with_xhttp,with_usbip,badlinkname,tfogo_checklinkname0,with_tailscale,ts_omit_logtail,ts_omit_ssh,ts_omit_drive,ts_omit_taildrop,ts_omit_webclient,ts_omit_doctor,ts_omit_capture,ts_omit_kube,ts_omit_aws,ts_omit_synology,ts_omit_bird,with_dhcp,grpcnotrace,ios,with_low_memory -v -ldflags -X github.com/sagernet/sing-box/constant.Version=1.15.0-alpha.13-d82b4e632 -X github.com/sagernet/sing-box/constant.BuildTime=1795354731 -X runtime.godebugDefault=multipathtcp=0,tlssha1=1 -checklinkname=0 -X github.com/sagernet/sing-box/constant.Commit=d82b4e6320a1a2ae1cc4cc907f74407d2f462f2e -s -w -buildid= -trimpath -buildvcs=false . failed: exit status 1
+
+[31mFATAL[0m[0450] exit status 1
 exit status 1
 ## xcodebuild.log (tail)
 (none)
 ## build.sh trace (tail)
-+ trap on_failure EXIT
-+ set -e
-+ echo '=== toolchain ==='
-=== toolchain ===
-+ xcodebuild -version
-Xcode 26.6
-Build version 17F113
-+ grep -i xcode
-+ ls /Applications
-Xcode_26.0.1.app
-Xcode_26.0.app
-Xcode_26.1.1.app
-Xcode_26.1.app
-Xcode_26.2.0.app
-Xcode_26.2.app
-Xcode_26.3.0.app
-Xcode_26.3.app
-Xcode_26.4.1.app
-Xcode_26.4.app
-Xcode_26.5.0.app
-Xcode_26.5.app
-Xcode_26.6.0.app
-Xcode_26.6.app
-Xcode.app
-+ sw_vers
-ProductName:		macOS
-ProductVersion:		26.7.2
-BuildVersion:		25G332
-+ echo '=== fetch sources ==='
-=== fetch sources ===
-+ git clone --depth 1 --branch v1.15.0-alpha.13-d82b4e632 https://github.com/jieluojun/sing-box.git /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core
-Cloning into '/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core'...
-+ '[' -n '' ']'
-+ git clone --depth 1 https://github.com/SagerNet/sing-box-for-apple.git /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/sing-box-for-apple
-Cloning into '/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/sing-box-for-apple'...
-++ git -C /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/sing-box-for-apple rev-parse HEAD
-+ echo 'client HEAD: 768b3de2baf2461dd06405cba1b2ca4e39da5ea4'
-client HEAD: 768b3de2baf2461dd06405cba1b2ca4e39da5ea4
-++ git -C /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core describe --tags
-+ echo 'core describe: v1.15.0-alpha.13-d82b4e632'
-core describe: v1.15.0-alpha.13-d82b4e632
-+ echo '=== install Go 1.25.5 ==='
-=== install Go 1.25.5 ===
-++ uname -m
-+ ARCH=arm64
-+ case "$ARCH" in
-+ GO_ARCH=arm64
-+ curl -fsL -o /tmp/go.tgz https://go.dev/dl/go1.25.5.darwin-arm64.tar.gz
-+ ls -lh /tmp/go.tgz
--rw-r--r--  1 runner  wheel    55M Nov 22 13:21 /tmp/go.tgz
-+ mkdir -p /Users/runner/go-sdk
-+ tar -C /Users/runner/go-sdk -xzf /tmp/go.tgz
-+ export PATH=/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
-+ PATH=/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
-+ go version
-go version go1.25.5 darwin/arm64
-+ echo '=== gomobile ==='
-=== gomobile ===
-+ export GOBIN=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
-+ GOBIN=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
-+ mkdir -p /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin
-+ cd /tmp
-+ go install golang.org/x/mobile/cmd/gomobile@latest
-go: downloading golang.org/x/mobile v0.0.0-20261117202452-47699113848a
-go: golang.org/x/mobile@v0.0.0-20261117202452-47699113848a requires go >= 1.26.0; switching to go1.26.11
-go: downloading go1.26.11 (darwin/arm64)
-go: downloading golang.org/x/mod v0.43.0
-go: downloading golang.org/x/sync v0.25.0
-go: downloading golang.org/x/tools v0.53.0
-+ export PATH=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin:/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
-+ PATH=/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin:/Users/runner/go-sdk/go/bin:/opt/homebrew/opt/rustup/bin:/opt/homebrew/lib/ruby/gems/3.4.0/bin:/opt/homebrew/opt/ruby@3.4/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
-+ command -v gomobile
-/Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core/bin/gomobile
-+ gomobile version
-gomobile version unknown: cannot test gomobile binary: exit status 1, no required module provides package golang.org/x/mobile/cmd/gomobile: go.mod file not found in current directory or any parent directory; see 'go help modules'
+github.com/mholt/acmez/v3
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress/compress_sse41
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/utils
+github.com/zeebo/blake3/internal/utils
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash/hash_avx2
+github.com/zeebo/blake3/internal/alg/hash/hash_avx2
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3
+github.com/zeebo/blake3
+go.uber.org/zap/exp/zapslog
+go.uber.org/zap/exp/zapslog
+golang.org/x/crypto/ocsp
+golang.org/x/crypto/ocsp
+github.com/caddyserver/certmagic
+github.com/dgryski/go-metro
+github.com/caddyserver/certmagic
+github.com/axiomhq/hyperloglog
+github.com/go4org/hashtriemap
+github.com/sagernet/tailscale/net/wsconn
+text/template/parse
+text/template
+html/template
+github.com/sagernet/tailscale/derp/derpserver
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/resolved
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/usbip
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/sagernet/sing-box/service/usbip
+github.com/caddyserver/certmagic/internal/atomicfile
+github.com/caddyserver/zerossl
+github.com/libdns/libdns
+github.com/mholt/acmez/v3/acme
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/mholt/acmez/v3
+github.com/sagernet/sing/protocol/http
+github.com/zeebo/blake3/internal/consts
+github.com/zeebo/blake3/internal/alg/compress/compress_pure
+github.com/zeebo/blake3/internal/alg/compress
+github.com/zeebo/blake3/internal/utils
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/zeebo/blake3/internal/alg/hash/hash_pure
+github.com/zeebo/blake3/internal/alg/hash
+github.com/zeebo/blake3/internal/alg
+github.com/zeebo/blake3
+go.uber.org/zap/exp/zapslog
+golang.org/x/crypto/ocsp
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/caddyserver/certmagic
+github.com/sagernet/tailscale/ipn/ipnext
+github.com/sagernet/sing-box/service/origin_ca
+github.com/sagernet/sing-box/service/resolved
+github.com/sagernet/sing-box/service/ssmapi
+github.com/sagernet/sing-box/service/usbip
+github.com/sagernet/sing-box/transport/v2rayquic
+github.com/sagernet/sing/protocol/http
+github.com/sagernet/sing-box/transport/v2rayxhttp
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/ipn/ipnlocal
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/wgengine/netstack
+github.com/sagernet/tailscale/feature/acme
+github.com/sagernet/tailscale/ipn/localapi
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/tailscale/feature/relayserver
+github.com/sagernet/tailscale/tsnet
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale/tailssh
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/protocol/tailscale
+github.com/sagernet/sing-box/service/derp
+github.com/sagernet/sing-box/service/derp
+github.com/sagernet/sing-box/service/derp
+/Users/runner/go/bin/gomobile: ios/arm64: go build -buildmode=c-archive -o /var/folders/q2/p1t6rgxj5fj32g1dc7dmd49r0000gn/T/gomobile-work-1970291810/libbox-ios-arm64.a -tags=with_quic,with_wireguard,with_utls,with_naive_outbound,with_clash_api,with_xhttp,with_usbip,badlinkname,tfogo_checklinkname0,with_tailscale,ts_omit_logtail,ts_omit_ssh,ts_omit_drive,ts_omit_taildrop,ts_omit_webclient,ts_omit_doctor,ts_omit_capture,ts_omit_kube,ts_omit_aws,ts_omit_synology,ts_omit_bird,with_dhcp,grpcnotrace,ios,with_low_memory -v -ldflags -X github.com/sagernet/sing-box/constant.Version=1.15.0-alpha.13-d82b4e632 -X github.com/sagernet/sing-box/constant.BuildTime=1795354731 -X runtime.godebugDefault=multipathtcp=0,tlssha1=1 -checklinkname=0 -X github.com/sagernet/sing-box/constant.Commit=d82b4e6320a1a2ae1cc4cc907f74407d2f462f2e -s -w -buildid= -trimpath -buildvcs=false . failed: exit status 1
 
-+ gomobile init
-+ cd /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/core
-+ echo '=== build Libbox.xcframework (ios, ding core) ==='
-=== build Libbox.xcframework (ios, ding core) ===
-+ tee /Users/runner/work/jiaoao3333.github.io/jiaoao3333.github.io/libbox-build.log
-+ go run ./cmd/internal/build_libbox -target apple -platform ios
-go: downloading github.com/sagernet/gomobile v0.1.12
-go: downloading github.com/reF1nd/sing v0.9.7-0.20261025115535-d4dda9140332
-go: downloading howett.net/plist v1.0.1
-go: downloading github.com/logrusorgru/aurora v2.0.3+incompatible
-go: downloading golang.org/x/mod v0.40.0
-go: downloading github.com/miekg/dns v1.1.72
-go: downloading golang.org/x/crypto v0.55.0
-go: downloading golang.org/x/sys v0.47.0
-go: downloading go4.org/netipx v0.0.0-20260823151212-3075585bcbeb
-[31mFATAL[0m[0000] missing gomobile installation
+[31mFATAL[0m[0450] exit status 1
 exit status 1
 + echo '---- locate framework ----'
 ---- locate framework ----
