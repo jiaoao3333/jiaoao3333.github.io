@@ -162,6 +162,7 @@ xcodebuild build -skipPackagePluginValidation \
   -destination 'generic/platform=iOS' \
   -derivedDataPath "$WS/build-dd" \
   CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+  IPHONEOS_DEPLOYMENT_TARGET=16.0 \
   > "$WS/xcodebuild.log" 2>&1
 XRC=$?
 set -e
