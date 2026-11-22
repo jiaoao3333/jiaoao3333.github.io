@@ -1,0 +1,1369 @@
+{
+  "log": {
+    "level": "info",
+    "output": "sing-box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "谷歌DNS",
+        "detour": "国外出口",
+        "server": "8.8.8.8"
+      },
+      {
+        "type": "https",
+        "tag": "CF-DNS",
+        "detour": "国外出口",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "https",
+        "tag": "腾讯DNS",
+        "detour": "DNS出口",
+        "server": "1.12.12.12"
+      },
+      {
+        "type": "https",
+        "tag": "阿里DNS",
+        "server": "223.5.5.5"
+      },
+      {
+        "type": "fakeip",
+        "tag": "虚拟DNS",
+        "inet4_range": "198.18.0.1/16",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "clash_mode": "全局",
+        "server": "CF-DNS"
+      },
+      {
+        "clash_mode": "直连",
+        "server": "阿里DNS"
+      },
+      {
+        "domain_regex": "(^|\\.)(alt[1-8]-mtalk|mtalk|mtalk4)\\.google\\.com$",
+        "server": "腾讯DNS"
+      },
+      {
+        "rule_set": "海外域名",
+        "server": "谷歌DNS"
+      },
+      {
+        "clash_mode": "规则",
+        "rule_set": "大陆域名",
+        "server": "腾讯DNS"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "虚拟DNS",
+        "rewrite_ttl": 1
+      }
+    ],
+    "final": "谷歌DNS",
+    "strategy": "prefer_ipv4",
+    "cache_capacity": 4096,
+    "optimistic": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "singbox",
+      "address": [
+        "172.18.0.1/30"
+      ],
+      "mtu": 9000,
+      "dns_mode": "hijack",
+      "dns_address": [
+        "172.18.0.2"
+      ],
+      "auto_route": true,
+      "auto_redirect": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "直连出口"
+    },
+    {
+      "type": "block",
+      "tag": "流量拦截"
+    },
+    {
+      "type": "selector",
+      "tag": "国外出口",
+      "outbounds": [
+        "香港",
+        "韩国",
+        "美国",
+        "其它",
+        "我的CF节点"
+      ],
+      "default": "香港"
+    },
+    {
+      "type": "selector",
+      "tag": "国内出口",
+      "outbounds": [
+        "百度直连",
+        "钉钉直连",
+        "中国",
+        "直连出口"
+      ],
+      "default": "百度直连"
+    },
+    {
+      "type": "selector",
+      "tag": "百度直连",
+      "outbounds": [
+        "百度/南京电信①",
+        "百度/南京电信②",
+        "百度/北京电信①",
+        "百度/北京电信②",
+        "百度/北京电信③",
+        "百度/广州电信",
+        "百度/保定联通①",
+        "百度/保定联通②",
+        "百度/南京联通",
+        "百度/苏州联通",
+        "百度/南京移动",
+        "百度/北京移动",
+        "百度/广州移动"
+      ],
+      "default": "百度/南京电信①"
+    },
+    {
+      "type": "selector",
+      "tag": "钉钉直连",
+      "outbounds": [
+        "钉钉/南京电信①",
+        "钉钉/南京电信②",
+        "钉钉/北京电信①",
+        "钉钉/北京电信②",
+        "钉钉/北京电信③",
+        "钉钉/广州电信",
+        "钉钉/保定联通①",
+        "钉钉/保定联通②",
+        "钉钉/南京联通",
+        "钉钉/苏州联通",
+        "钉钉/南京移动",
+        "钉钉/广州移动"
+      ],
+      "default": "钉钉/南京电信①"
+    },
+    {
+      "type": "selector",
+      "tag": "游戏UDP",
+      "outbounds": [
+        "中国",
+        "直连出口"
+      ],
+      "default": "中国"
+    },
+    {
+      "type": "selector",
+      "tag": "全部UDP",
+      "outbounds": [
+        "中国",
+        "直连出口"
+      ],
+      "default": "中国"
+    },
+    {
+      "type": "selector",
+      "tag": "链式代理",
+      "outbounds": [
+        "百度直连",
+        "钉钉直连",
+        "🇨🇳 上海市 电信-54321",
+        "🇭🇰 香港-01",
+        "🇭🇰 香港-02",
+        "🇰🇷 韩国-01",
+        "🇰🇷 韩国-02",
+        "🇺🇸 美国-01",
+        "🇺🇸 美国-02",
+        "🇺🇸 美国-03",
+        "🇺🇸 美国-04",
+        "🇺🇸 美国-05",
+        "🇺🇸 美国-06",
+        "🇺🇸 美国-07",
+        "🇺🇸 美国-08",
+        "🇺🇸 美国-09",
+        "🇺🇸 美国-10",
+        "🇺🇸 美国-11",
+        "🇺🇸 美国-12",
+        "🇺🇸 美国-13",
+        "🇺🇸 美国-14",
+        "🇺🇸 美国-15",
+        "🇺🇸 美国-16",
+        "🇺🇸 美国-17",
+        "🇺🇸 美国-18",
+        "🇺🇸 美国-19",
+        "🇺🇸 美国-20",
+        "🇨🇭 瑞士",
+        "🇩🇪 德国",
+        "🇰🇭 柬埔寨-金边-广播-大带宽-52080",
+        "🇹🇭 泰国"
+      ],
+      "default": "百度直连"
+    },
+    {
+      "type": "selector",
+      "tag": "订阅更新",
+      "outbounds": [
+        "国外出口",
+        "国内出口",
+        "直连出口"
+      ],
+      "default": "国外出口"
+    },
+    {
+      "type": "selector",
+      "tag": "DNS出口",
+      "outbounds": [
+        "百度直连",
+        "钉钉直连"
+      ],
+      "default": "百度直连"
+    },
+    {
+      "type": "selector",
+      "tag": "广告出口",
+      "outbounds": [
+        "流量拦截"
+      ],
+      "default": "流量拦截"
+    },
+    {
+      "type": "selector",
+      "tag": "中国",
+      "outbounds": [
+        "百度/南京电信①",
+        "百度/南京电信②",
+        "百度/北京电信①",
+        "百度/北京电信②",
+        "百度/北京电信③",
+        "百度/广州电信",
+        "百度/保定联通①",
+        "百度/保定联通②",
+        "百度/南京联通",
+        "百度/苏州联通",
+        "百度/南京移动",
+        "百度/北京移动",
+        "百度/广州移动",
+        "钉钉/南京电信①",
+        "钉钉/南京电信②",
+        "钉钉/北京电信①",
+        "钉钉/北京电信②",
+        "钉钉/北京电信③",
+        "钉钉/广州电信",
+        "钉钉/保定联通①",
+        "钉钉/保定联通②",
+        "钉钉/南京联通",
+        "钉钉/苏州联通",
+        "钉钉/南京移动",
+        "钉钉/广州移动",
+        "🇨🇳 上海市 电信-54321"
+      ],
+      "default": "百度/南京电信①"
+    },
+    {
+      "type": "selector",
+      "tag": "香港",
+      "outbounds": [
+        "🇭🇰 香港-01",
+        "🇭🇰 香港-02"
+      ],
+      "default": "🇭🇰 香港-01"
+    },
+    {
+      "type": "selector",
+      "tag": "韩国",
+      "outbounds": [
+        "🇰🇷 韩国-01",
+        "🇰🇷 韩国-02"
+      ],
+      "default": "🇰🇷 韩国-01"
+    },
+    {
+      "type": "selector",
+      "tag": "美国",
+      "outbounds": [
+        "🇺🇸 美国-01",
+        "🇺🇸 美国-02",
+        "🇺🇸 美国-03",
+        "🇺🇸 美国-04",
+        "🇺🇸 美国-05",
+        "🇺🇸 美国-06",
+        "🇺🇸 美国-07",
+        "🇺🇸 美国-08",
+        "🇺🇸 美国-09",
+        "🇺🇸 美国-10",
+        "🇺🇸 美国-11",
+        "🇺🇸 美国-12",
+        "🇺🇸 美国-13",
+        "🇺🇸 美国-14",
+        "🇺🇸 美国-15",
+        "🇺🇸 美国-16",
+        "🇺🇸 美国-17",
+        "🇺🇸 美国-18",
+        "🇺🇸 美国-19",
+        "🇺🇸 美国-20"
+      ],
+      "default": "🇺🇸 美国-01"
+    },
+    {
+      "type": "selector",
+      "tag": "其它",
+      "outbounds": [
+        "🇨🇭 瑞士",
+        "🇩🇪 德国",
+        "🇰🇭 柬埔寨-金边-广播-大带宽-52080",
+        "🇹🇭 泰国"
+      ],
+      "default": "🇨🇭 瑞士"
+    },
+    {
+      "type": "selector",
+      "tag": "我的CF节点",
+      "outbounds": [
+        "CF-SNI-172.66.199.152",
+        "CF-SNI-172.66.196.132",
+        "CF-SNI-172.67.65.87",
+        "CF-SNI-104.17.237.113",
+        "CF-SNI-104.25.200.215",
+        "CF-SNI-cf.090227.xyz"
+      ],
+      "default": "CF-SNI-172.66.199.152"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇳 上海市 电信-54321",
+      "server": "106.15.107.224",
+      "server_port": 54321,
+      "uuid": "f4587104-415d-468a-b50f-3b9d22d3386d",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 香港-01",
+      "server": "8.217.225.87",
+      "server_port": 9999,
+      "uuid": "08df46ce-6d52-42e4-9575-14dfe09ec8a3",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇭🇰 香港-02",
+      "server": "47.86.54.113",
+      "server_port": 52080,
+      "uuid": "17016cf8-d494-45ed-9741-2a4ed8b6a9e9",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇰🇷 韩国-01",
+      "server": "158.180.93.118",
+      "server_port": 9080,
+      "uuid": "eac12b3a-d4f8-410a-9571-abfe5333f10f",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇰🇷 韩国-02",
+      "server": "158.180.93.118",
+      "server_port": 9527,
+      "uuid": "1f6c5b06-ae6a-40c5-9966-0655774fec3f",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-01",
+      "server": "107.172.103.175",
+      "server_port": 9080,
+      "uuid": "289c965e-505c-4982-9486-e373ea4cd5f1",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-02",
+      "server": "107.172.103.175",
+      "server_port": 55555,
+      "uuid": "a92bbf93-520d-4c3a-92b7-94a7931a14cf",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-03",
+      "server": "207.56.20.54",
+      "server_port": 52080,
+      "uuid": "c392d8c4-e1af-434c-9ac9-d2599ec89ed1",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-04",
+      "server": "207.56.20.54",
+      "server_port": 8800,
+      "uuid": "46cd86c4-1551-4203-993b-a833e6cd34db",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-05",
+      "server": "192.204.58.87",
+      "server_port": 52080,
+      "uuid": "700dc5c3-9b7b-4ac8-8ee5-010ca3d03789",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/3x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-06",
+      "server": "172.245.106.236",
+      "server_port": 23567,
+      "uuid": "94b804fa-f7f0-4105-9544-ec667c876bee",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-07",
+      "server": "172.245.106.236",
+      "server_port": 52080,
+      "uuid": "069b590d-895b-4707-bf71-7c204c3f6e77",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-08",
+      "server": "107.172.18.132",
+      "server_port": 2053,
+      "uuid": "6ebbfda8-f0f8-4dbe-9bd0-82cc232cfb1e",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/3x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-09",
+      "server": "107.172.18.132",
+      "server_port": 52080,
+      "uuid": "2ceddc69-0f1a-44b2-b7b3-fd6674c3fc59",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/3x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-10",
+      "server": "165.1.66.87",
+      "server_port": 2941,
+      "uuid": "d31ab684-b703-48fb-8574-fe258fbf6ec1",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-11",
+      "server": "165.1.66.87",
+      "server_port": 52080,
+      "uuid": "a8f7dc13-918a-447c-a365-b85b7a9caa31",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-12",
+      "server": "192.204.58.87",
+      "server_port": 2053,
+      "uuid": "286a45bc-f3aa-4a2d-8e6e-21fb824d9eeb",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/3x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-13",
+      "server": "107.174.133.115",
+      "server_port": 52080,
+      "uuid": "e7fb8bc6-5e0a-4e64-86cc-eb0ddd7ef4dd",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-14",
+      "server": "91.217.139.126",
+      "server_port": 52080,
+      "uuid": "849cee87-c64a-4a93-b02f-865ac485f0fd",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-15",
+      "server": "23.94.214.118",
+      "server_port": 52080,
+      "uuid": "1935aead-6a62-4db3-a8dd-eb0d89e0b74f",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-16",
+      "server": "82.29.132.78",
+      "server_port": 21094,
+      "uuid": "6b1f809d-59a0-4541-b628-f083c2859009",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/qq-group-938399693",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-17",
+      "server": "172.245.90.231",
+      "server_port": 1086,
+      "uuid": "c9003b9b-2b9c-4033-80d8-3c57420c9604",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-18",
+      "server": "107.175.76.215",
+      "server_port": 1288,
+      "uuid": "29a72eac-a4d1-4526-8fa0-d3ecc4e38b44",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-19",
+      "server": "23.94.83.37",
+      "server_port": 52080,
+      "uuid": "355c1760-9bde-4b77-916b-5191e7f704a3",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇺🇸 美国-20",
+      "server": "43.153.117.95",
+      "server_port": 52080,
+      "uuid": "ae4817d0-eed5-4702-af53-e21a6a7ac988",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇨🇭 瑞士",
+      "server": "179.43.140.24",
+      "server_port": 42831,
+      "uuid": "a925a98c-ad7a-40c6-9fdf-130a1de69416",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/3x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪 德国",
+      "server": "23.165.200.150",
+      "server_port": 52080,
+      "uuid": "672cdade-bb05-4c86-b578-e5d09b79524a",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇰🇭 柬埔寨-金边-广播-大带宽-52080",
+      "server": "38.54.4.243",
+      "server_port": 52080,
+      "uuid": "2b90e52c-5af5-47ef-b127-e5f76219a408",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/QQqun-737805443",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": "🇹🇭 泰国",
+      "server": "27.254.83.174",
+      "server_port": 32080,
+      "uuid": "b9e84fb2-4c20-4d5b-a0f2-d09693706a4b",
+      "alter_id": 0,
+      "security": "auto",
+      "transport": {
+        "type": "http",
+        "host": [
+          "m.iqiyi.com"
+        ],
+        "path": "/x",
+        "method": "GET"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/南京电信①",
+      "server": "180.101.50.208",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/南京电信②",
+      "server": "180.101.50.249",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/北京电信①",
+      "server": "220.181.7.1",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/北京电信②",
+      "server": "220.181.33.174",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/北京电信③",
+      "server": "220.181.111.189",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/广州电信",
+      "server": "14.215.182.75",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/保定联通①",
+      "server": "110.242.70.68",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/保定联通②",
+      "server": "110.242.70.69",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/南京联通",
+      "server": "153.3.237.117",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/苏州联通",
+      "server": "157.0.146.158",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/南京移动",
+      "server": "36.155.169.188",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/北京移动",
+      "server": "39.156.69.198",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "百度/广州移动",
+      "server": "183.240.98.84",
+      "server_port": 443,
+      "headers": {
+        "Host": "153.3.236.22:443",
+        "X-T5-Auth": "683556433"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/南京电信①",
+      "server": "180.101.50.208",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/南京电信②",
+      "server": "180.101.50.249",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/北京电信①",
+      "server": "220.181.7.1",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/北京电信②",
+      "server": "220.181.33.174",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/北京电信③",
+      "server": "220.181.111.189",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/广州电信",
+      "server": "14.215.182.75",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/保定联通①",
+      "server": "110.242.70.68",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/保定联通②",
+      "server": "110.242.70.69",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/南京联通",
+      "server": "153.3.237.117",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/苏州联通",
+      "server": "157.0.146.158",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/南京移动",
+      "server": "36.155.169.188",
+      "server_port": 443
+    },
+    {
+      "type": "http",
+      "tag": "钉钉/广州移动",
+      "server": "183.240.98.84",
+      "server_port": 443
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-172.66.199.152",
+      "server": "172.66.199.152",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-172.66.196.132",
+      "server": "172.66.196.132",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-172.67.65.87",
+      "server": "172.67.65.87",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-104.17.237.113",
+      "server": "104.17.237.113",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-104.25.200.215",
+      "server": "104.25.200.215",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "CF-SNI-cf.090227.xyz",
+      "server": "cf.090227.xyz",
+      "server_port": 443,
+      "uuid": "1fd1a700-a9e1-461d-8c35-3060099e3ad9",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "fragment": true
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "jiaozhengnihao.ccwu.cc"
+        }
+      }
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "全局",
+        "outbound": "国外出口"
+      },
+      {
+        "clash_mode": "直连",
+        "outbound": "直连出口"
+      },
+      {
+        "rule_set": "广告域名",
+        "outbound": "广告出口"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "network": "udp",
+            "port": [
+              443,
+              3478,
+              5349
+            ]
+          },
+          {
+            "network": "udp",
+            "rule_set": "本地地址"
+          },
+          {
+            "protocol": "stun"
+          },
+          {
+            "domain": [
+              "cdnws.api.huya.com",
+              "wswup.cdn.huya.com"
+            ]
+          },
+          {
+            "domain_keyword": [
+              "p2p",
+              "stun",
+              "pcdn",
+              "mcdn",
+              "torrent",
+              "tracker",
+              "httpdns",
+              "playstation"
+            ]
+          }
+        ],
+        "action": "reject",
+        "method": "drop"
+      },
+      {
+        "network": "udp",
+        "outbound": "全部UDP"
+      },
+      {
+        "domain_regex": "(^|\\.)(alt[1-8]-mtalk|mtalk|mtalk4)\\.google\\.com$",
+        "outbound": "国内出口"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "海外域名"
+          },
+          {
+            "domain_suffix": [
+              "right.com.cn",
+              "sgameglobal.com"
+            ]
+          },
+          {
+            "port": 446
+          }
+        ],
+        "outbound": "国外出口"
+      },
+      {
+        "domain_suffix": [
+          "xajtl.com",
+          "dlproxy.uk",
+          "steamcontent.com",
+          "xn--qfsx5xvnik06b.com"
+        ],
+        "clash_mode": "规则",
+        "outbound": "国内出口"
+      },
+      {
+        "clash_mode": "规则",
+        "rule_set": "大陆域名",
+        "outbound": "国内出口"
+      },
+      {
+        "rule_set": "本地地址",
+        "outbound": "直连出口"
+      },
+      {
+        "clash_mode": "规则",
+        "rule_set": "大陆地址",
+        "outbound": "国内出口"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "排除域名",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/fakeip-filter.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      },
+      {
+        "type": "remote",
+        "tag": "广告域名",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      },
+      {
+        "type": "remote",
+        "tag": "海外域名",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      },
+      {
+        "type": "remote",
+        "tag": "大陆域名",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      },
+      {
+        "type": "remote",
+        "tag": "本地地址",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      },
+      {
+        "type": "remote",
+        "tag": "大陆地址",
+        "url": "https://v6.gh-proxy.org/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs",
+        "update_interval": "24h",
+        "format": "binary",
+        "download_detour": "直连出口"
+      }
+    ],
+    "final": "国外出口",
+    "find_process": true,
+    "auto_detect_interface": true,
+    "default_domain_resolver": "腾讯DNS",
+    "default_http_client": "远程下载"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true,
+      "store_dns": true
+    }
+  }
+}
