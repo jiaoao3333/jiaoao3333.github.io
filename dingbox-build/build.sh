@@ -82,12 +82,22 @@ tar -C "$HOME/go-sdk" -xzf /tmp/go.tgz
 export PATH="$HOME/go-sdk/go/bin:$PATH"
 go version
 
-echo "=== gomobile (best effort) ==="
-cd "$WS/core"
+echo "=== gomobile ==="
+# NOTE: 'go install <pkg>' without @version inside a module only works if that
+# module provides the package; the core module does not provide x/mobile, so
+# the old form failed silently (|| true) and build_libbox then died with
+# 'missing gomobile installation'. Install from /tmp (outside any module) with
+# an explicit version, fall back to the sagernet fork, and fail loud if the
+# binary is still absent.
 export GOBIN="$WS/core/bin"
-go install golang.org/x/mobile/cmd/gomobile || true
-ls "$WS/core/bin" || true
-export PATH="$WS/core/bin:$PATH"
+mkdir -p "$GOBIN"
+( cd /tmp && go install golang.org/x/mobile/cmd/gomobile@latest ) \
+  || ( cd /tmp && go install github.com/sagernet/gomobile/cmd/gomobile@v0.1.12 )
+export PATH="$GOBIN:$PATH"
+command -v gomobile || { echo "gomobile install failed"; exit 1; }
+gomobile version || true
+gomobile init || true
+cd "$WS/core"
 
 echo "=== build Libbox.xcframework (ios, ding core) ==="
 go run ./cmd/internal/build_libbox -target apple -platform ios 2>&1 | tee "$WS/libbox-build.log"
