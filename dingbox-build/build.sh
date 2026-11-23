@@ -154,6 +154,63 @@ if [ "$SRC" != "$WS/sing-box-for-apple/Libbox.xcframework" ]; then
 fi
 ls "$WS/sing-box-for-apple/Frameworks/Libbox.xcframework"
 
+echo "=== patch deployment targets (run 7) ==="
+# Root cause of run 7: the run 6 fix passed IPHONEOS_DEPLOYMENT_TARGET=16.0
+# on the xcodebuild command line, which overrides EVERY target -- including
+# WidgetExtension, whose ControlWidget APIs need iOS 18.0 (upstream sets it
+# to 18.0 in the project; run 7 died with "'ControlWidgetConfiguration' is
+# only available in iOS 18.0 or newer" for every widget file). A command-line
+# setting cannot be per-target, so drop it and patch the project instead:
+# SFI 15.0 -> 16.0 only (its MainView.swift uses `buildIf`, iOS 16+),
+# leaving WidgetExtension at 18.0 and every other target untouched.
+# Fails fast if upstream restructures the project, instead of silently
+# building with the wrong target again.
+python3 - "$WS/sing-box-for-apple/sing-box.xcodeproj/project.pbxproj" <<'PYEOF'
+import re, sys
+path = sys.argv[1]
+text = open(path).read()
+
+def find_configs(target, txt):
+    m = re.search(r'Build configuration list for PBXNativeTarget "' + target + r'" \*/ = \{\s*isa = XCConfigurationList;\s*buildConfigurations = \(\s*([^)]*)\)', txt, re.S)
+    if not m:
+        sys.exit(target + ": build configuration list not found in project.pbxproj")
+    ids = re.findall(r'([0-9A-F]{24}) /\*', m.group(1))
+    if not ids:
+        sys.exit(target + ": no build configurations found")
+    return ids
+
+def get_config(cid, txt):
+    bm = re.search(re.escape(cid) + r' /\* (\w+) \*/ = \{\s*isa = XCBuildConfiguration;\s*buildSettings = \{(.*?)\};', txt, re.S)
+    if not bm:
+        sys.exit("config " + cid + " not found")
+    return bm
+
+def targets(target, txt):
+    vals = {}
+    for cid in find_configs(target, txt):
+        bm = get_config(cid, txt)
+        tv = re.search(r'IPHONEOS_DEPLOYMENT_TARGET = ([\d.]+);', bm.group(2))
+        vals[bm.group(1)] = tv.group(1) if tv else "(inherited)"
+    return vals
+
+for cid in find_configs("SFI", text):
+    bm = get_config(cid, text)
+    settings = bm.group(2)
+    if 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;' not in settings:
+        sys.exit("SFI config " + cid + " (" + bm.group(1) + "): expected IPHONEOS_DEPLOYMENT_TARGET = 15.0; upstream may have changed, refusing to guess")
+    text = text[:bm.start(2)] + settings.replace('IPHONEOS_DEPLOYMENT_TARGET = 15.0;', 'IPHONEOS_DEPLOYMENT_TARGET = 16.0;', 1) + text[bm.end(2):]
+open(path, 'w').write(text)
+text = open(path).read()
+sfi = targets("SFI", text)
+wid = targets("WidgetExtension", text)
+print("after patch: SFI=%s WidgetExtension=%s" % (sfi, wid))
+if any(v != '16.0' for v in sfi.values()):
+    sys.exit("SFI deployment target is not 16.0 after patch")
+if any(v != '18.0' for v in wid.values()):
+    sys.exit("WidgetExtension deployment target changed (expected 18.0)")
+print("deployment-target patch verified")
+PYEOF
+
 echo "=== build SFI app (unsigned) ==="
 cd "$WS/sing-box-for-apple"
 set +e
@@ -162,7 +219,6 @@ xcodebuild build -skipPackagePluginValidation \
   -destination 'generic/platform=iOS' \
   -derivedDataPath "$WS/build-dd" \
   CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
-  IPHONEOS_DEPLOYMENT_TARGET=16.0 \
   > "$WS/xcodebuild.log" 2>&1
 XRC=$?
 set -e
