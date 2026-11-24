@@ -54,23 +54,99 @@
       "type": "selector",
       "tag": "节点选择",
       "outbounds": [
-        "Nodaroo-Stockholm"
+        "自动选择",
+        "Nodaroo-Stockholm",
+        "Nodaroo-VLESS-2",
+        "Nodaroo-VLESS-3",
+        "Nodaroo-VLESS-4",
+        "Nodaroo-VMess"
       ],
-      "default": "Nodaroo-Stockholm"
+      "default": "自动选择"
+    },
+    {
+      "type": "urltest",
+      "tag": "自动选择",
+      "outbounds": [
+        "Nodaroo-Stockholm",
+        "Nodaroo-VLESS-2",
+        "Nodaroo-VLESS-3",
+        "Nodaroo-VLESS-4",
+        "Nodaroo-VMess"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "5m",
+      "tolerance": 50
     },
     {
       "type": "vless",
       "tag": "Nodaroo-Stockholm",
       "server": "se2.nodaroo.fun",
       "server_port": 25894,
-      "uuid": "429476c9-0a2e-471a-8619-b9dbf68e0801",
       "transport": {
         "type": "ws",
         "path": "/c09ca1c886293418",
         "headers": {
           "Host": "se2.nodaroo.fun"
         }
-      }
+      },
+      "uuid": "429476c9-0a2e-471a-8619-b9dbf68e0801"
+    },
+    {
+      "type": "vless",
+      "tag": "Nodaroo-VLESS-2",
+      "server": "se2.nodaroo.fun",
+      "server_port": 25894,
+      "transport": {
+        "type": "ws",
+        "path": "/85e50724fd5e5d9d",
+        "headers": {
+          "Host": "se2.nodaroo.fun"
+        }
+      },
+      "uuid": "2a55ae92-725e-4ea0-80a8-6a415a04170d"
+    },
+    {
+      "type": "vless",
+      "tag": "Nodaroo-VLESS-3",
+      "server": "se2.nodaroo.fun",
+      "server_port": 25894,
+      "transport": {
+        "type": "ws",
+        "path": "/3e8681166724d7a1",
+        "headers": {
+          "Host": "se2.nodaroo.fun"
+        }
+      },
+      "uuid": "1c64093a-9ff8-4f18-bf36-cd53871d804c"
+    },
+    {
+      "type": "vless",
+      "tag": "Nodaroo-VLESS-4",
+      "server": "se2.nodaroo.fun",
+      "server_port": 25894,
+      "transport": {
+        "type": "ws",
+        "path": "/0625c5d6588cb186",
+        "headers": {
+          "Host": "se2.nodaroo.fun"
+        }
+      },
+      "uuid": "811020e5-b708-4385-a674-3bea6423dfb8"
+    },
+    {
+      "type": "vmess",
+      "tag": "Nodaroo-VMess",
+      "server": "se2.nodaroo.fun",
+      "server_port": 25894,
+      "transport": {
+        "type": "ws",
+        "path": "/b62ad1910cb2f2c0",
+        "headers": {
+          "Host": "se2.nodaroo.fun"
+        }
+      },
+      "uuid": "61ad01fd-e1ae-436e-bba9-b809177d7e31",
+      "alter_id": 0
     },
     {
       "type": "direct",
