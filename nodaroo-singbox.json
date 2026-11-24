@@ -1,0 +1,99 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "udp",
+        "tag": "local",
+        "server": "223.5.5.5"
+      },
+      {
+        "type": "https",
+        "tag": "remote",
+        "server": "8.8.8.8",
+        "detour": "节点选择"
+      },
+      {
+        "type": "fakeip",
+        "tag": "fakeip",
+        "inet4_range": "198.18.0.1/16"
+      }
+    ],
+    "rules": [
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
+      }
+    ],
+    "final": "remote",
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": [
+        "172.18.0.1/30"
+      ],
+      "mtu": 1500,
+      "dns_mode": "hijack",
+      "dns_address": [
+        "172.18.0.2"
+      ],
+      "auto_route": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "节点选择",
+      "outbounds": [
+        "Nodaroo-Stockholm"
+      ],
+      "default": "Nodaroo-Stockholm"
+    },
+    {
+      "type": "vless",
+      "tag": "Nodaroo-Stockholm",
+      "server": "se2.nodaroo.fun",
+      "server_port": 25894,
+      "uuid": "429476c9-0a2e-471a-8619-b9dbf68e0801",
+      "transport": {
+        "type": "ws",
+        "path": "/c09ca1c886293418",
+        "headers": {
+          "Host": "se2.nodaroo.fun"
+        }
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      }
+    ],
+    "final": "节点选择",
+    "default_domain_resolver": {
+      "server": "local"
+    }
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true,
+      "store_dns": true
+    }
+  }
+}
