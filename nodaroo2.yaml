@@ -1,0 +1,51 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+dns:
+  enable: true
+  ipv6: false
+  nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  fallback:
+  - 1.1.1.1
+  - 8.8.8.8
+proxies:
+- name: Nodaroo2-Hysteria2
+  type: hysteria2
+  server: se2.nodaroo.fun
+  port: 26168
+  password: 79a3ed0c79223a6f6b08a683a26e610e
+  obfs: salamander
+  obfs-password: d76193f7bd72ca459ac5dc9e13b83257
+  sni: www.bing.com
+  skip-cert-verify: true
+  udp: true
+- name: Nodaroo2-AnyTLS
+  type: anytls
+  server: se2.nodaroo.fun
+  port: 26168
+  password: 79d1ed1fa609216a76c2d5669b011a4f
+  sni: www.bing.com
+  skip-cert-verify: true
+  udp: true
+proxy-groups:
+- name: 节点选择
+  type: select
+  proxies:
+  - 自动选择
+  - Nodaroo2-Hysteria2
+  - Nodaroo2-AnyTLS
+- name: 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+  - Nodaroo2-Hysteria2
+  - Nodaroo2-AnyTLS
+rules:
+- GEOIP,CN,DIRECT
+- MATCH,节点选择
