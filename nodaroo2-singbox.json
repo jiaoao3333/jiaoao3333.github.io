@@ -75,7 +75,7 @@
       "type": "hysteria2",
       "tag": "Nodaroo2-Hysteria2",
       "server": "se2.nodaroo.fun",
-      "server_port": 26168,
+      "server_port": 26458,
       "password": "79a3ed0c79223a6f6b08a683a26e610e",
       "obfs": {
         "type": "salamander",
@@ -91,7 +91,7 @@
       "type": "anytls",
       "tag": "Nodaroo2-AnyTLS",
       "server": "se2.nodaroo.fun",
-      "server_port": 26168,
+      "server_port": 26458,
       "password": "79d1ed1fa609216a76c2d5669b011a4f",
       "tls": {
         "enabled": true,

@@ -16,7 +16,7 @@ proxies:
 - name: Nodaroo2-Hysteria2
   type: hysteria2
   server: se2.nodaroo.fun
-  port: 26168
+  port: 26458
   password: 79a3ed0c79223a6f6b08a683a26e610e
   obfs: salamander
   obfs-password: d76193f7bd72ca459ac5dc9e13b83257
@@ -26,7 +26,7 @@ proxies:
 - name: Nodaroo2-AnyTLS
   type: anytls
   server: se2.nodaroo.fun
-  port: 26168
+  port: 26458
   password: 79d1ed1fa609216a76c2d5669b011a4f
   sni: www.bing.com
   skip-cert-verify: true
