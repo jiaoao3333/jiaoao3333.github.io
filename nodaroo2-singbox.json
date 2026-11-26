@@ -76,10 +76,10 @@
       "tag": "Nodaroo2-Hysteria2",
       "server": "se2.nodaroo.fun",
       "server_port": 26458,
-      "password": "79a3ed0c79223a6f6b08a683a26e610e",
+      "password": "394f9fb0f921cd08bcd6b2a6873bdf9c",
       "obfs": {
         "type": "salamander",
-        "password": "d76193f7bd72ca459ac5dc9e13b83257"
+        "password": "36a72320e3050eaccc15c6aa842dd67a"
       },
       "tls": {
         "enabled": true,
@@ -92,7 +92,7 @@
       "tag": "Nodaroo2-AnyTLS",
       "server": "se2.nodaroo.fun",
       "server_port": 26458,
-      "password": "79d1ed1fa609216a76c2d5669b011a4f",
+      "password": "5c9a8cb5a2f68e9c16749a5cda608cdc",
       "tls": {
         "enabled": true,
         "server_name": "www.bing.com",
